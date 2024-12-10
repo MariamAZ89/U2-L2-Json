@@ -21,9 +21,20 @@ const add = function () {
 const load = () => {
   textLabel.innerText = localStorage.getItem("User");
 };
+
+const deleteUser = function () {
+  window.localStorage.removeItem("User");
+  load();
+};
+
 saveButton.addEventListner("click", () => {
   if (nameInput.value && surnameInput.value && ageInput.value) {
     add();
   }
   load();
+});
+deleteButton.onclick = deleteUser;
+window.addEventListener("load", () => {
+  load();
+  counterView();
 });
